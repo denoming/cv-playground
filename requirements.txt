@@ -1,4 +1,5 @@
 numpy
+dlib
 scikit-learn
 seaborn
 jupyter
