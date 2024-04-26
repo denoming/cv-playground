@@ -8,10 +8,11 @@ def show_image(image: cv2.Mat, title: str = "No title"):
     cv2.destroyAllWindows()
 
 
-def show_full_image_plot(image: cv2.Mat, code: int = cv2.COLOR_BGR2RGB, dpi: int = 80):
-    height, width, _ = image.shape
+def show_full_image_plot(image: cv2.Mat, title: str = "No title", code: int = cv2.COLOR_BGR2RGB, dpi: int = 80):
+    height, width, = image.shape
     fig = plt.figure(figsize=(width / dpi, height / dpi), dpi=dpi)
     ax1 = fig.add_axes((0, 0, 1, 1))
+    ax1.set_title(title)
     ax1.imshow(cv2.cvtColor(image, code))
     plt.show()
 
