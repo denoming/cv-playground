@@ -63,7 +63,11 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
+# Virtual environment
+.venv
+
 # Project specific
 models
 datasets
 workarea
+video
