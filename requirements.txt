@@ -2,7 +2,9 @@ numpy
 dlib
 scikit-learn
 seaborn
+pandas
 jupyter
 matplotlib
 opencv-python
 opencv-contrib-python
+tensorflow[and-cuda]
