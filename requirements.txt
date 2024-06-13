@@ -7,4 +7,4 @@ jupyter
 matplotlib
 opencv-python
 opencv-contrib-python
-tensorflow[and-cuda]
+tensorflow-cpu
