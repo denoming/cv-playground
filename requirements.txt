@@ -1,10 +1,11 @@
 numpy
 dlib
+scipy
 scikit-learn
 seaborn
 pandas
-jupyter
 matplotlib
 opencv-python
 opencv-contrib-python
-tensorflow-cpu
+tensorflow
+ultralytics
