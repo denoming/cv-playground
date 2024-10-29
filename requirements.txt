@@ -7,5 +7,8 @@ pandas
 matplotlib
 opencv-python
 opencv-contrib-python
-tensorflow
+tensorflow[and-cuda] == 2.17.1
 ultralytics
+onnx
+onnxslim
+onnxruntime
