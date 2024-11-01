@@ -1,8 +1,8 @@
 import cv2
 import cv2 as cv
-from common import CV_VIDEO_DIR
+from common import CV_DATA_DIR
 
-video = cv.VideoCapture(str(CV_VIDEO_DIR / 'race.mp4'))
+video = cv.VideoCapture(str(CV_DATA_DIR / 'race.mp4'))
 ok, frame = video.read()
 assert ok is True, \
     'Unable to read video frame'
