@@ -12,3 +12,4 @@ ultralytics
 onnx
 onnxslim
 onnxruntime
+onnxruntime-gpu
