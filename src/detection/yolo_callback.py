@@ -1,5 +1,8 @@
+"""
+Example of using callback to handle detected objects and image
+"""
+
 import os
-from pathlib import Path
 from common import CV_WORKAREA_DIR, CV_DATA_DIR, CV_MODELS_DIR
 from ultralytics import YOLO
 from ultralytics.models.sam import Predictor
