@@ -6,10 +6,5 @@ seaborn
 pandas
 matplotlib
 opencv-python
-opencv-contrib-python
 tensorflow
 ultralytics
-onnx
-onnxslim
-onnxruntime
-onnxruntime-gpu
