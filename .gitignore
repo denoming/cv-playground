@@ -73,3 +73,6 @@ models
 datasets
 workarea
 video
+
+# Ignore TensorBoard logs dir
+src/**/logs

@@ -2,6 +2,7 @@ pydot
 numpy
 scipy
 scikit-learn
+scikit-image
 seaborn
 pandas
 matplotlib
