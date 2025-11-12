@@ -74,5 +74,6 @@ datasets
 workarea
 video
 
-# Ignore TensorBoard logs dir
+# Ignore TensorFlow common subdirs
 src/**/logs
+src/**/data
