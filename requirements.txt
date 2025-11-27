@@ -1,3 +1,4 @@
+
 pydot
 numpy
 scipy
@@ -10,3 +11,7 @@ opencv-python
 tensorflow[and-cuda]
 tensorflow-datasets
 ultralytics
+
+# Audio
+pydub
+sounddevice
