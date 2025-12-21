@@ -11,6 +11,8 @@ opencv-python
 tensorflow[and-cuda]
 tensorflow-datasets
 tensorflow_hub
+tensorflow_docs
+tensorboard
 ultralytics
 
 # Audio
