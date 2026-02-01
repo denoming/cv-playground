@@ -4,7 +4,6 @@ scipy
 scikit-learn
 scikit-image
 seaborn
-pandas
 matplotlib
 opencv-python
 ultralytics
@@ -19,3 +18,7 @@ tensorboard
 # Audio Processing
 pydub
 sounddevice
+
+# Pandas
+pandas
+openpyxl # Supporting Excel files
