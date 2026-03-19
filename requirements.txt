@@ -1,24 +1,27 @@
-pydot
-numpy
-scipy
-scikit-learn
-scikit-image
-seaborn
-matplotlib
-opencv-python
-ultralytics
+matplotlib~=3.10.0
+numpy~=2.1.0
+scipy~=1.17.0
 
-# ML: TensorFlow
-tensorflow[and-cuda]
-tensorflow-datasets
-tensorflow_hub
+scikit-learn~=1.8.0
+scikit-image~=0.26.0
+
+# TensorFlow
+tensorflow[and-cuda]~=2.19.0
+# + Models
+tf-models-official~=2.19.0
+# + Datasets
+tensorflow-datasets~=4.9.0
+# + Hub
+tensorflow_hub~=0.16.0
+# + Docs
 tensorflow_docs
-tensorboard
+# + Board
+tensorboard~=2.19.0
 
 # Audio Processing
-pydub
-sounddevice
+pydub~=0.25.0
+sounddevice~=0.5.0
 
 # Pandas
-pandas
-openpyxl # Supporting Excel files
+pandas~=3.0.0
+openpyxl~=3.1.0
