@@ -1,12 +1,17 @@
+# Basic
 pydot
-numpy
+numpy<2.2.0
 scipy
+
+# Computer Vision
+opencv-python==4.11.0.86
 
 # Matplotlib
 matplotlib
 # + Qt5 backend
 PyQt5
 
+# Scikit
 scikit-learn
 scikit-image
 
@@ -31,5 +36,5 @@ sounddevice
 pandas
 openpyxl
 
-#
+# Data Providers
 roboflow
