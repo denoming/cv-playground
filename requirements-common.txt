@@ -1,0 +1,41 @@
+# Misc
+loguru
+pillow
+ddgs
+pydot
+numpy
+scipy
+
+# Widgets for Jupyter notebooks
+ipywidgets
+
+# Keras
+keras-hub
+keras
+
+# Add support exporting to ONNX format
+tf2onnx
+
+# Computer Vision
+opencv-python~=4.11.0
+
+# Matplotlib
+matplotlib
+# + Qt5 backend
+PyQt5
+
+# Scikit
+scikit-learn
+scikit-image
+
+# Audio Processing
+pydub
+sounddevice
+
+# Pandas
+pandas
+openpyxl
+
+# Data Providers
+roboflow
+kagglehub
