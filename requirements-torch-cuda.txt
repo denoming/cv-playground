@@ -1,16 +1,17 @@
-# Tensorflow cpu-only version.
+# TensorFlow cpu-only version.
 tensorflow-cpu~=2.20.0
 tensorflow-datasets~=4.9.0
 tensorflow-text~=2.20.0
 
-# Torch with cuda support.
+# Torch with CUDA support.
 --extra-index-url https://download.pytorch.org/whl/cu126
 torch==2.11.0+cu126
 torchvision==0.26.0+cu126
 
-# Jax cpu-only version.
+# JAX cpu-only version.
 jax[cpu]~=0.6.0
 
+# FastAI Framework
 fastai
 
 -r requirements-common.txt

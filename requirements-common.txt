@@ -9,6 +9,10 @@ scipy
 # Widgets for Jupyter notebooks
 ipywidgets
 
+# NLP
+nltk
+pymorphy3
+
 # Keras
 keras-hub
 keras
