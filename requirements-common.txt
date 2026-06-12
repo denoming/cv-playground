@@ -38,6 +38,7 @@ sounddevice
 
 # Pandas
 pandas
+pandas-stubs
 openpyxl
 
 # Data Providers
