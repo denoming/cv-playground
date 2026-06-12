@@ -72,8 +72,6 @@ fabric.properties
 models
 datasets
 workarea
-video
 
 # Ignore TensorFlow common subdirs
-src/**/logs
-src/**/data
+src/**/files
