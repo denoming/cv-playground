@@ -5,6 +5,7 @@ ddgs
 pydot
 numpy
 scipy
+tqdm
 
 # Widgets for Jupyter notebooks
 ipywidgets
