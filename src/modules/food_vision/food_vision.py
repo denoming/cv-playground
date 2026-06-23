@@ -12,23 +12,28 @@ from ops import train
 from utils import save_model
 
 # Hyperparameters
-LEARNING_RATE = 0.001
-N_EPOCHS = 10
 N_HIDDEN_LAYERS = 32
-BATCH_SIZE = 64
+# Image size
 IMAGE_SIZE = (64,64)
 
+# Enable CUDA graph optimization
+torch.backends.cudnn.benchmark = True
 
-def run(data_dir: Path, device: torch.device):
+def run(device: torch.device,
+        path_to_data: Path,
+        lr: float,
+        epochs: int,
+        batch_size: int):
     tr_dl, ts_dl, classes = get_dataloaders(
-        tr_dir=data_dir/"train",
-        ts_dir=data_dir/"test",
+        tr_dir=path_to_data/"train",
+        ts_dir=path_to_data/"test",
         transform=v2.Compose([
             v2.Resize(size=IMAGE_SIZE),
+            v2.RandomHorizontalFlip(),
             v2.ToImage(),
-            v2.ToDtype(dtype=torch.float, scale=True)
+            v2.ToDtype(dtype=torch.float, scale=True),
         ]),
-        batch_size=BATCH_SIZE,
+        batch_size=batch_size,
         n_workers=2
     )
 
@@ -38,10 +43,10 @@ def run(data_dir: Path, device: torch.device):
         hidden_units=N_HIDDEN_LAYERS
     ).to(device)
 
-    loss_fn = nn.CrossEntropyLoss()
-    accuracy_fn = MulticlassAccuracy(num_classes=len(classes)).to(device)
-    optimizer = torch.optim.Adam(params=model.parameters(), lr=LEARNING_RATE)
-    _ = train(model, tr_dl, ts_dl, optimizer, loss_fn, accuracy_fn, epochs=N_EPOCHS, device=device)
+    estimator = MulticlassAccuracy(num_classes=len(classes)).to(device)
+    criterion = nn.CrossEntropyLoss()
+    optimizer = torch.optim.Adam(params=model.parameters(), lr=lr)
+    _ = train(model, tr_dl, ts_dl, optimizer, criterion, estimator, epochs=epochs, device=device)
 
     save_model(model=model,
                target_dir=Path("files")/"foodvision",
@@ -51,7 +56,10 @@ def run(data_dir: Path, device: torch.device):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train TinyVgg")
     parser.add_argument("--disable-cuda", action="store_true", help="Disable CUDA")
-    parser.add_argument("--data_dir", required=True, type=Path, help="Path to image data")
+    parser.add_argument("--lr", default=0.001, type=float, help="Learning rate (default: 0.001)")
+    parser.add_argument("--epochs", default=10, type=int, help="The number of epochs to train (default: 10)")
+    parser.add_argument("--batch_size", default=32, type=int, help="The size of batch (default: 32)")
+    parser.add_argument("--path_to_data", required=True, type=Path, help="Path to data")
     opts = parser.parse_args()
 
     opts.device = None
@@ -60,7 +68,7 @@ if __name__ == "__main__":
     else:
         opts.device = torch.device("cpu")
 
-    run(opts.data_dir, opts.device)
+    run(opts.device, opts.path_to_data, opts.lr, opts.epochs, opts.batch_size)
 
 
 
