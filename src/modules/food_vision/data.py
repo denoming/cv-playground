@@ -4,7 +4,8 @@ from torchvision import datasets, transforms as T
 
 def get_dataloaders(tr_dir: Path,
                     ts_dir: Path,
-                    transform: T.Compose,
+                    tr_transform: T.Compose,
+                    ts_transform: T.Compose,
                     batch_size: int,
                     n_workers: int) -> tuple[DataLoader, DataLoader, list[str]]:
     """
@@ -23,8 +24,8 @@ def get_dataloaders(tr_dir: Path,
     Returns:
         A tuple with training and testing data loaders with the list of classes.
     """
-    tr_dataset = datasets.ImageFolder(tr_dir, transform=transform)
-    ts_dataset = datasets.ImageFolder(ts_dir, transform=transform)
+    tr_dataset = datasets.ImageFolder(tr_dir, transform=tr_transform)
+    ts_dataset = datasets.ImageFolder(ts_dir, transform=ts_transform)
     classes = tr_dataset.classes
     tr_dl = DataLoader(
         tr_dataset,

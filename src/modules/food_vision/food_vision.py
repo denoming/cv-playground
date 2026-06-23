@@ -27,9 +27,14 @@ def run(device: torch.device,
     tr_dl, ts_dl, classes = get_dataloaders(
         tr_dir=path_to_data/"train",
         ts_dir=path_to_data/"test",
-        transform=v2.Compose([
+        tr_transform=v2.Compose([
             v2.Resize(size=IMAGE_SIZE),
-            v2.RandomHorizontalFlip(),
+            v2.TrivialAugmentWide(),
+            v2.ToImage(),
+            v2.ToDtype(dtype=torch.float, scale=True),
+        ]),
+        ts_transform=v2.Compose([
+            v2.Resize(size=IMAGE_SIZE),
             v2.ToImage(),
             v2.ToDtype(dtype=torch.float, scale=True),
         ]),

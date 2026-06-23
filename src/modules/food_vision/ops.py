@@ -109,7 +109,7 @@ def train(model: torch.nn.Module,
     for epoch in tqdm(range(epochs)):
         tr_loss, tr_acc = train_step(model, tr_dl, optimizer, loss_fn, accuracy_fn, device)
         ts_loss, ts_acc = test_step(model, ts_dl, loss_fn, accuracy_fn, device)
-        print(f"Epoch: {epoch+1} | Train L/A: {tr_loss:.4f}/{tr_acc:.4f} | Test L/A: {ts_loss:.4f}/{ts_acc:.4f}")
+        print(f"Epoch: {epoch+1:02} | Train L/A: {tr_loss:.4f}/{tr_acc:.4f} | Test L/A: {ts_loss:.4f}/{ts_acc:.4f}")
         results["tr_loss"].append(tr_loss)
         results["tr_acc"].append(tr_acc)
         results["ts_loss"].append(ts_loss)
