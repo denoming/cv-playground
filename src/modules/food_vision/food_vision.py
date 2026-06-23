@@ -1,14 +1,15 @@
+import argparse
+from pathlib import Path
+
 import torch
 from torch import nn
-from torchvision.transforms import v2
 from torchmetrics.classification import MulticlassAccuracy
-from pathlib import Path
-from food_vision.model import TinyVgg
-from food_vision.data import get_dataloaders
-from food_vision.ops import train
-from food_vision.utils import save_model
-from common import CV_DATASETS_DIR
+from torchvision.transforms import v2
 
+from data import get_dataloaders
+from model import TinyVgg
+from ops import train
+from utils import save_model
 
 # Hyperparameters
 LEARNING_RATE = 0.001
@@ -17,18 +18,11 @@ N_HIDDEN_LAYERS = 32
 BATCH_SIZE = 64
 IMAGE_SIZE = (64,64)
 
-# Dataset dirs
-DATASET_PATH = CV_DATASETS_DIR/"food"/"pizza_steak_sushi"
-TR_DATASET_DIR = DATASET_PATH / "train"
-TS_DATASET_DIR = DATASET_PATH / "test"
 
-
-def run():
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
+def run(data_dir: Path, device: torch.device):
     tr_dl, ts_dl, classes = get_dataloaders(
-        tr_dir=TR_DATASET_DIR,
-        ts_dir=TS_DATASET_DIR,
+        tr_dir=data_dir/"train",
+        ts_dir=data_dir/"test",
         transform=v2.Compose([
             v2.Resize(size=IMAGE_SIZE),
             v2.ToImage(),
@@ -55,7 +49,18 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    parser = argparse.ArgumentParser(description="Train TinyVgg")
+    parser.add_argument("--disable-cuda", action="store_true", help="Disable CUDA")
+    parser.add_argument("--data_dir", required=True, type=Path, help="Path to image data")
+    opts = parser.parse_args()
+
+    opts.device = None
+    if not opts.disable_cuda and torch.cuda.is_available():
+        opts.device = torch.device("cuda")
+    else:
+        opts.device = torch.device("cpu")
+
+    run(opts.data_dir, opts.device)
 
 
 
