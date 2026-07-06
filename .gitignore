@@ -75,3 +75,4 @@ workarea
 
 # Ignore TensorFlow common subdirs
 src/**/files
+src/**/runs
